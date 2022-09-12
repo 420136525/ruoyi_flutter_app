@@ -1,6 +1,6 @@
 
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi Flutter v1.0.0</h1>
-<h4 align="center">基于flutter 开发的移动端框架</h4>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi Flutter APPv1.0.0</h1>
+<h4 align="center">基于flutter 开发的APP框架</h4>
 
 
 ## 平台简介
