@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     print("登录前的TOKEN:" + ((SPUtil().get<String>("token") ?? "")).toString());
     print("登录前的TOKEN:" + GetStorage().hasData("token").toString());
+    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: GetStorage().hasData("token")
