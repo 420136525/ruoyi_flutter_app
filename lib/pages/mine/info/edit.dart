@@ -17,8 +17,6 @@ class _UserEditState extends State<UserEdit> {
         value: index,
         groupValue: details["arg"]["data"]["sex"],
         onChanged: (value) {
-          print(details);
-          print(value);
           setState(() {
             details["arg"]["data"]["sex"] = index;
           });
@@ -52,8 +50,7 @@ class _UserEditState extends State<UserEdit> {
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
                         "用户昵称",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+
                       ),
                     )),
                 Expanded(
@@ -76,7 +73,7 @@ class _UserEditState extends State<UserEdit> {
                                     TextPosition(
                                         affinity: TextAffinity.downstream,
                                         offset: details["arg"]["data"]
-                                                ["nickName"]
+                                        ["nickName"]
                                             .length))),
                           ),
                           decoration: const InputDecoration(
@@ -104,8 +101,7 @@ class _UserEditState extends State<UserEdit> {
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
                         "手机号码",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+
                       ),
                     )),
                 Expanded(
@@ -128,7 +124,7 @@ class _UserEditState extends State<UserEdit> {
                                     TextPosition(
                                         affinity: TextAffinity.downstream,
                                         offset: details["arg"]["data"]
-                                                ["phonenumber"]
+                                        ["phonenumber"]
                                             .length))),
                           ),
                           decoration: const InputDecoration(
@@ -155,8 +151,7 @@ class _UserEditState extends State<UserEdit> {
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
                         "邮箱",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+
                       ),
                     )),
                 Expanded(
@@ -203,7 +198,9 @@ class _UserEditState extends State<UserEdit> {
                     flex: 3,
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
-                      child: Text("性别"),
+                      child: Text(
+                        "性别",
+                      ),
                     )),
                 Expanded(
                     flex: 7,
@@ -230,7 +227,7 @@ class _UserEditState extends State<UserEdit> {
                     shape: MaterialStateProperty.all(
                         const RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(5.0))))),
+                            BorderRadius.all(Radius.circular(5.0))))),
                 onPressed: () async {
                   var data = await updateProfile(details["arg"]["data"]);
                   if (data.data["code"] == 200) {
@@ -239,7 +236,8 @@ class _UserEditState extends State<UserEdit> {
                   } else {
                     showDialog(
                         context: context,
-                        builder: (BuildContext context) => AlertDialog(
+                        builder: (BuildContext context) =>
+                            AlertDialog(
                               content: Text(
                                 data.data["msg"],
                                 style: TextStyle(color: Colors.cyan),
