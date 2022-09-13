@@ -8,3 +8,12 @@ var getUserProfile = () async {
 var getRouters = () async {
   return await DioRequest().httpRequest("/getRouters", true, "get");
 };
+
+var getProfile = () async {
+  return await DioRequest().httpRequest("/system/user/profile", true, "get");
+};
+
+var updateProfile = (data) async {
+  return await DioRequest()
+      .httpRequest("/system/user/profile", true, "put", data: data);
+};

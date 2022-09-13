@@ -93,8 +93,16 @@ class _MineIndexState extends State<MineIndex> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.defaultDialog(
-                                    title: "QQ交流群:", middleText: "133713780");
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const AlertDialog(
+                                          content: Text(
+                                            "QQ交流群:133713780",
+                                            style:
+                                                TextStyle(color: Colors.cyan),
+                                          ),
+                                        ));
                               },
                               child: SingleChildScrollView(
                                 child: Column(
@@ -169,9 +177,11 @@ class _MineIndexState extends State<MineIndex> {
                           child: Column(
                             children: [
                               ListTile(
-                                onTap: () async {
+                                onTap: () {
                                   ///TODO 跳转编辑资料页
-                                  await Get.toNamed("/home/userEdit");
+                                  getProfile().then((value) => Get.toNamed(
+                                      "/home/userEdit",
+                                      arguments: {"arg": value.data}));
                                 },
                                 leading: Icon(
                                   Icons.perm_identity,

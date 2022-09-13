@@ -36,7 +36,6 @@ class DioRequest {
     }, onResponse: (response, handler) {
       if (response.realUri.path == "/login") {
         if (response.data["code"] == 200) {
-          print("存入了TOKEN:" + response.data["token"]);
           GetStorage().write("token", response.data["token"]);
           SPUtil().setString("token", response.data["token"]);
         }
@@ -47,16 +46,15 @@ class DioRequest {
         }
       }
       if (response.realUri.path == "/getRouters") {
-        if (response.data["code"] == 200) {}
+        if (response.data["code"] == 200) {
+          GetStorage().write("route", response.data["data"]);
+        }
       }
 
       if (response.realUri.path == "/getInfo") {
         if (response.data["code"] == 200) {
           GetStorage().write("nickName", response.data["user"]["nickName"]);
           GetStorage().write("userName", response.data["user"]["userName"]);
-
-          SPUtil().setString("nickName", response.data["user"]["nickName"]);
-          SPUtil().setString("userName", response.data["user"]["userName"]);
           SPUtil().setString(
               "avatar",
               response.data["user"]["avatar"] ??
@@ -64,14 +62,11 @@ class DioRequest {
         }
       }
       if (response.data["code"] == 403) {
-        //TODO 清空所有内容跳转到登录页面
         SPUtil().clean();
         GetStorage().erase();
         Get.toNamed("/login");
       }
       if ((response.data["code"] == 401)) {
-        //TODO 清空所有内容跳转到登录页面
-        // SPUtil().remove("token");
         SPUtil().clean();
         GetStorage().erase();
         Get.toNamed("/login");
@@ -93,16 +88,17 @@ class DioRequest {
     return _instance ??= DioRequest();
   }
 
-  httpRequest(String path,
-      bool isToken,
-      String method, {
-        data,
-        Map<String, dynamic>? queryParameters,
-        CancelToken? cancelToken,
-        Options? options,
-        ProgressCallback? onSendProgress,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+  httpRequest(
+    String path,
+    bool isToken,
+    String method, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     Options options;
     if (isToken) {
       if (!GetStorage().hasData("token")) {
