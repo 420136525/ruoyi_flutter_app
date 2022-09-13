@@ -47,10 +47,7 @@ class DioRequest {
         }
       }
       if (response.realUri.path == "/getRouters") {
-        if (response.data["code"] == 200) {
-
-
-        }
+        if (response.data["code"] == 200) {}
       }
 
       if (response.realUri.path == "/getInfo") {
@@ -84,6 +81,7 @@ class DioRequest {
       print("data = ${response.data}");
       handler.next(response);
     }, onError: (DioError e, handler) {
+      Get.snackbar("网络错误", "请求失败");
       print("================== 错误响应数据 ======================");
       print("type = ${e.type}");
       print("message = ${e.message}");

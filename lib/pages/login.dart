@@ -5,7 +5,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
 import '../api/login.dart';
-import '../api/system/user.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({Key? key}) : super(key: key);
@@ -82,229 +81,203 @@ class _LoginIndexState extends State<LoginIndex> {
   Widget build(BuildContext context) {
     return Center(
         child: Flex(
-          direction: Axis.vertical,
-          children: [
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.only(left: 40, right: 40),
-                children: [
-                  const SizedBox(
-                    height: 60,
+      direction: Axis.vertical,
+      children: [
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.only(left: 40, right: 40),
+            children: [
+              const SizedBox(
+                height: 60,
+              ),
+              const Center(
+                child: LogInIcon(),
+              ),
+              const SizedBox(
+                height: 70,
+              ),
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+                    border: Border.all(width: 1.0)),
+                child: TextField(
+                  onChanged: (value) {
+                    username = value;
+                  },
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person),
+                    border: InputBorder.none,
+                    hintText: "请输入用户名 ",
                   ),
-                  const Center(
-                    child: LogInIcon(),
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+                    border: Border.all(width: 1.0)),
+                child: TextField(
+                  obscureText: true,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.lock_outline_sharp),
+                    border: InputBorder.none,
+                    hintText: "请输入密码 ",
                   ),
-                  const SizedBox(
-                    height: 70,
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(25.0),
+                          bottomLeft: Radius.circular(25.0)),
+                      border: Border.all(width: 1.0)),
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    children: [
+                      Expanded(
+                          flex: 7,
+                          child: TextField(
+                            onChanged: (value) {
+                              code = value;
+                            },
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              icon: Icon(Icons.verified_user),
+                              border: InputBorder.none,
+                              hintText: "请输入验证码 ",
+                            ),
+                          )),
+                      Expanded(
+                          flex: 5,
+                          child: InkWell(
+                              onTap: () {
+                                getImg();
+                              },
+                              child: Image.memory(
+                                const Base64Decoder().convert(url),
+                                fit: BoxFit.fill,
+                              ))),
+                    ],
+                  )),
+              const SizedBox(
+                height: 45,
+              ),
+              Container(
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
                   ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(25.0)),
-                        border: Border.all(width: 1.0)),
-                    child: TextField(
-                      onChanged: (value) {
-                        username = value;
-                      },
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
-                        border: InputBorder.none,
-                        hintText: "请输入用户名 ",
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(25.0)),
-                        border: Border.all(width: 1.0)),
-                    child: TextField(
-                      obscureText: true,
-                      onChanged: (value) {
-                        password = value;
-                      },
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.lock_outline_sharp),
-                        border: InputBorder.none,
-                        hintText: "请输入密码 ",
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(25.0),
-                              bottomLeft: Radius.circular(25.0)),
-                          border: Border.all(width: 1.0)),
-                      child: Flex(
-                        direction: Axis.horizontal,
-                        children: [
-                          Expanded(
-                              flex: 7,
-                              child: TextField(
-                                onChanged: (value) {
-                                  code = value;
-                                },
-                                keyboardType: TextInputType.number,
-                                decoration: const InputDecoration(
-                                  icon: Icon(Icons.verified_user),
-                                  border: InputBorder.none,
-                                  hintText: "请输入验证码 ",
-                                ),
-                              )),
-                          Expanded(
-                              flex: 5,
-                              child: InkWell(
-                                  onTap: () {
-                                    getImg();
-                                  },
-                                  child: Image.memory(
-                                    const Base64Decoder().convert(url),
-                                    fit: BoxFit.fill,
-                                  ))),
-                        ],
-                      )),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  Container(
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                      ),
-                      child: TextButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Colors.blue),
-                            shape: MaterialStateProperty.all(
-                                const RoundedRectangleBorder(
-                                    borderRadius:
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blue),
+                        shape: MaterialStateProperty.all(
+                            const RoundedRectangleBorder(
+                                borderRadius:
                                     BorderRadius.all(Radius.circular(25.0))))),
-                        onPressed: () async {
-                          if (username.isEmpty) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
+                    onPressed: () async {
+                      if (username.isEmpty) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
                                 const AlertDialog(
                                   content: Text(
                                     '用户名不能为空！！',
                                     style: TextStyle(color: Colors.red),
                                   ),
                                 ));
-                            return;
-                          }
-                          if (password.isEmpty) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
+                        return;
+                      }
+                      if (password.isEmpty) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
                                 const AlertDialog(
                                   content: Text(
                                     '密码不能为空！！',
                                     style: TextStyle(color: Colors.red),
                                   ),
                                 ));
-                            return;
-                          }
-                          if (code.isEmpty) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
+                        return;
+                      }
+                      if (code.isEmpty) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
                                 const AlertDialog(
                                   content: Text(
                                     '验证码不能为空！！',
                                     style: TextStyle(color: Colors.red),
                                   ),
                                 ));
-                            return;
-                          }
-                          var requestData = {
-                            "uuid": uuid,
-                            "username": username,
-                            "password": password,
-                            "code": code
-                          };
+                        return;
+                      }
+                      var requestData = {
+                        "uuid": uuid,
+                        "username": username,
+                        "password": password,
+                        "code": code
+                      };
 
-                          var data = await logInByClient(requestData);
-                          var resp = jsonDecode(data.toString());
-                          print(resp);
-                          var token = resp["token"];
+                      var data = await logInByClient(requestData);
+                      var resp = jsonDecode(data.toString());
 
-                          var info = await getInfo();
-                          await getUserProfile();
-                          var jsonInfo = jsonDecode(info.toString());
-                          await getRouters();
-
-                          print(jsonInfo);
-                          if (resp["code"] == 200) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    AlertDialog(
-                                      content: Text(
-                                        resp["msg"],
-                                        style: const TextStyle(
-                                            color: Colors.cyan),
-                                      ),
-                                    ));
-                            // ignore: use_build_context_synchronously
-                            Get.toNamed("/home");
-                          } else {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    AlertDialog(
-                                      content: Text(
-                                        resp["msg"],
-                                        style: const TextStyle(
-                                            color: Colors.cyan),
-                                      ),
-                                    ));
-                            // Navigator.pushNamed(context, "/home");
-                            getImg();
-                          }
-                        },
-                        child: const Text(
-                          "登录",
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      )),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                          text: "登录即代表同意",
-                          style: const TextStyle(color: Colors.black),
-                          children: [
-                            const TextSpan(
-                                text: "《用户协议》",
-                                style: TextStyle(color: Colors.red)),
-                            TextSpan(
-                                text: "《用户隐私》",
-                                style: TextStyle(
-                                    color: Theme
-                                        .of(context)
-                                        .accentColor)),
-                          ]),
+                      if (resp["code"] == 200) {
+                        // ignore: use_build_context_synchronously
+                        Get.toNamed("/home");
+                      } else {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  content: Text(
+                                    resp["msg"],
+                                    style: const TextStyle(color: Colors.cyan),
+                                  ),
+                                ));
+                        getImg();
+                      }
+                    },
+                    child: const Text(
+                      "登录",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ],
+                  )),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ],
-        ));
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                      text: "登录即代表同意",
+                      style: const TextStyle(color: Colors.black),
+                      children: [
+                        const TextSpan(
+                            text: "《用户协议》",
+                            style: TextStyle(color: Colors.red)),
+                        TextSpan(
+                            text: "《用户隐私》",
+                            style: TextStyle(
+                                color: Theme.of(context).accentColor)),
+                      ]),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ));
   }
 }
 
