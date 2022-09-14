@@ -17,3 +17,8 @@ var updateProfile = (data) async {
   return await DioRequest()
       .httpRequest("/system/user/profile", true, "put", data: data);
 };
+
+var updateUserPwd = (data) async {
+  return await DioRequest()
+      .httpRequest("/system/user/profile/updatePwd", true, "put", data: data);
+};

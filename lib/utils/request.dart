@@ -132,7 +132,11 @@ class DioRequest {
       case "post":
         return await dio.request(path, data: data, options: options);
       case "put":
-        return await dio.request(path, data: data, options: options);
+        return await dio.request(
+          path,
+          queryParameters: data,
+          options: options,
+        );
       case "delete":
         return await dio.request(path, data: data, options: options);
     }
