@@ -59,7 +59,7 @@ class _MineIndexState extends State<MineIndex> {
                           ),
                           title: Text(
                             //${SPUtil().get("name")}
-                            "用户名: ${GetStorage().read("userName")}",
+                            "用户名: ${GetStorage().read("userName") ?? ""}",
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
@@ -67,7 +67,7 @@ class _MineIndexState extends State<MineIndex> {
                           ),
                           subtitle: Text(
                             // SPUtil().get("name"),
-                            GetStorage().read("roleGroup"),
+                            GetStorage().read("roleGroup") ?? "",
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: const Icon(

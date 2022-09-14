@@ -5,6 +5,7 @@ import 'package:ruoyi_app/pages/mine/help/index.dart';
 import 'package:ruoyi_app/pages/mine/info/edit.dart';
 import 'package:ruoyi_app/pages/mine/info/index.dart';
 
+import '../pages/mine/pwd/index.dart';
 import '../pages/mine/setting/index.dart';
 import '../pages/pages_index.dart';
 import 'app_routes.dart';
@@ -22,7 +23,12 @@ class AppPages {
         GetPage(name: AppRoutes.about, page: () => const About()),
         GetPage(name: AppRoutes.userEdit, page: () => const UserEdit()),
         GetPage(name: AppRoutes.help, page: () => const Help()),
-        GetPage(name: AppRoutes.settings, page: () => const Settings())
+        GetPage(
+            name: AppRoutes.settings,
+            page: () => const Settings(),
+            children: [
+              GetPage(name: AppRoutes.pwdIndex, page: () => const PWDIndex())
+            ])
       ],
     ),
     GetPage(name: AppRoutes.Login, page: () => const MyHome()),

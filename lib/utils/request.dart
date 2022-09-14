@@ -109,7 +109,7 @@ class DioRequest {
           ///TODO 如果也是空的那么清空所有信息，跳转登录页面逻辑
           GetStorage().remove("token");
           SPUtil().remove("token");
-          Get.toNamed("/login");
+          Get.offNamed("/login");
         }
       }
       options = Options(
