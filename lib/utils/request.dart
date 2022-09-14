@@ -135,6 +135,7 @@ class DioRequest {
         return await dio.request(
           path,
           queryParameters: data,
+          data: data,
           options: options,
         );
       case "delete":
