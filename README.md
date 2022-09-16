@@ -20,6 +20,10 @@ RuoYi flutter App 客户端,APP解决方案，采用Flutter框架，一份代码
         <td><img src="https://mouor001.oss-cn-beijing.aliyuncs.com/my.png"/></td>
         <td><img src="https://mouor001.oss-cn-beijing.aliyuncs.com/info.png"/></td>
     </tr>
+     <tr>
+        <td><img src="https://mouor001.oss-cn-beijing.aliyuncs.com/settings.png"/></td>
+        <td><img src="https://mouor001.oss-cn-beijing.aliyuncs.com/editpwd.png"/></td>
+    </tr>
 </table>
 
  
