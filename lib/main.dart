@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ruoyi_app/api/login.dart';
@@ -20,6 +21,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
+
+      ///国际化 自定义配置 目前配置了 英语和中文
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: const [Locale("en", "US"), Locale("zh", "CN")],
+
+
       initialRoute: GetStorage().hasData("token")
           ? AppPages.INITIAL
           : AppPages.INITIALLOGIN,

@@ -98,6 +98,7 @@ class _LoginIndexState extends State<LoginIndex> {
               ),
               Container(
                 height: 50,
+                padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(25.0)),
                     border: Border.all(width: 1.0)),
@@ -117,6 +118,7 @@ class _LoginIndexState extends State<LoginIndex> {
               ),
               Container(
                 height: 50,
+                padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(25.0)),
                     border: Border.all(width: 1.0)),
@@ -137,6 +139,7 @@ class _LoginIndexState extends State<LoginIndex> {
               ),
               Container(
                   height: 50,
+                  padding: EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(25.0),
