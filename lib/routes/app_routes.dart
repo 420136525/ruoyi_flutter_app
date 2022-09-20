@@ -14,6 +14,6 @@ abstract class AppRoutes {
   static const userEdit = "/userEdit";
 
   static const pwdIndex = "/pwdIndex";
-  
+
   static const helpDetails = "/helpDetails";
 }
