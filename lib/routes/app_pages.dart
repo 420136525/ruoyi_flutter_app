@@ -1,6 +1,7 @@
 import 'package:get/route_manager.dart';
 import 'package:ruoyi_app/pages/login.dart';
 import 'package:ruoyi_app/pages/mine/about/index.dart';
+import 'package:ruoyi_app/pages/mine/help/details.dart';
 import 'package:ruoyi_app/pages/mine/help/index.dart';
 import 'package:ruoyi_app/pages/mine/info/edit.dart';
 import 'package:ruoyi_app/pages/mine/info/index.dart';
@@ -22,7 +23,9 @@ class AppPages {
         GetPage(name: AppRoutes.info, page: () => const InfoIndex()),
         GetPage(name: AppRoutes.about, page: () => const About()),
         GetPage(name: AppRoutes.userEdit, page: () => const UserEdit()),
-        GetPage(name: AppRoutes.help, page: () => const Help()),
+        GetPage(name: AppRoutes.help, page: () => const Help(), children: [
+          GetPage(name: AppRoutes.helpDetails, page: () => const HelpDetails())
+        ]),
         GetPage(
             name: AppRoutes.settings,
             page: () => const Settings(),
