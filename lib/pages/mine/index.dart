@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:like_button/like_button.dart';
+import 'package:ruoyi_app/icon/ruoyi_icon.dart';
 
 import '../../api/system/user.dart';
 
@@ -121,7 +122,7 @@ class _MineIndexState extends State<MineIndex> {
                               child: Column(
                                 children: const [
                                   Icon(
-                                    Icons.support_agent,
+                                    RuoYiIcons.service,
                                     size: 40,
                                     color: Colors.blue,
                                   ),
@@ -133,7 +134,7 @@ class _MineIndexState extends State<MineIndex> {
                               child: Column(
                                 children: const [
                                   Icon(
-                                    Icons.question_answer_outlined,
+                                    RuoYiIcons.community,
                                     size: 40,
                                   ),
                                   Text("反馈社区"),

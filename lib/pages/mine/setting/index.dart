@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ruoyi_app/icon/ruoyi_icon.dart';
 import 'package:ruoyi_app/utils/sputils.dart';
 
 import '../../login.dart';
@@ -48,7 +49,7 @@ class _SettingsState extends State<Settings> {
                     onTap: () {
                       Get.toNamed("/home/settings/pwdIndex");
                     },
-                    leading: Icon(Icons.lock_outline_sharp),
+                    leading: Icon(RuoYiIcons.password),
                     title: Text("修改密码"),
                     trailing: Icon(Icons.keyboard_arrow_right),
                   ),
@@ -57,7 +58,7 @@ class _SettingsState extends State<Settings> {
                     onTap: () {
                       Get.snackbar("已经是最新版本！", "");
                     },
-                    leading: Icon(Icons.refresh),
+                    leading: Icon(RuoYiIcons.refresh),
                     title: Text("检查更新"),
                     trailing: Icon(Icons.keyboard_arrow_right),
                   ),
@@ -71,7 +72,7 @@ class _SettingsState extends State<Settings> {
                       SPUtil().clean();
                       SPUtil().setString("token", token);
                     },
-                    leading: Icon(Icons.cleaning_services),
+                    leading: Icon(RuoYiIcons.clean),
                     title: Text("清理缓存"),
                     trailing: Icon(Icons.keyboard_arrow_right),
                   ),
@@ -87,7 +88,7 @@ class _SettingsState extends State<Settings> {
                       shape: MaterialStateProperty.all(
                           const RoundedRectangleBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(5.0))))),
+                                  BorderRadius.all(Radius.circular(5.0))))),
                   onPressed: () {
                     Get.defaultDialog(
                         title: "系统提示",
