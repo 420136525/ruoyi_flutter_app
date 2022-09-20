@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
+import 'package:ruoyi_app/icon/ruoyi_icon.dart';
 
 import '../api/login.dart';
 
@@ -107,7 +108,7 @@ class _LoginIndexState extends State<LoginIndex> {
                     username = value;
                   },
                   decoration: const InputDecoration(
-                    icon: Icon(Icons.person),
+                    icon: Icon(RuoYiIcons.user),
                     border: InputBorder.none,
                     hintText: "请输入用户名 ",
                   ),
@@ -128,7 +129,7 @@ class _LoginIndexState extends State<LoginIndex> {
                     password = value;
                   },
                   decoration: const InputDecoration(
-                    icon: Icon(Icons.lock_outline_sharp),
+                    icon: Icon(RuoYiIcons.password),
                     border: InputBorder.none,
                     hintText: "请输入密码 ",
                   ),
@@ -156,7 +157,7 @@ class _LoginIndexState extends State<LoginIndex> {
                             },
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
-                              icon: Icon(Icons.verified_user),
+                              icon: Icon(RuoYiIcons.code),
                               border: InputBorder.none,
                               hintText: "请输入验证码 ",
                             ),
