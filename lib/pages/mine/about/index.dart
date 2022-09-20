@@ -23,7 +23,7 @@ class _AboutState extends State<About> {
         margin: const EdgeInsets.only(right: 15, left: 15, top: 15),
         child: ListView(
           children: [
-            Container(
+            SizedBox(
               height: 150,
               child: GridView.count(
                 crossAxisCount: 1,
