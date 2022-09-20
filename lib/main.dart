@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [Locale("en", "US"), Locale("zh", "CN")],
 
-
       initialRoute: GetStorage().hasData("token")
           ? AppPages.INITIAL
           : AppPages.INITIALLOGIN,
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
           getInfo();
           getUserProfile();
         }
-        if (routing?.current != "/home") {
+        if (routing?.current == "/home") {
           getRouters();
         }
       },
