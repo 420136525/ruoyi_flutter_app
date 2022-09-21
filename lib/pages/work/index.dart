@@ -189,12 +189,3 @@ List<Map> imageList = [
 ];
 
 List listTab = [];
-
-class Kong extends StatelessWidget {
-  const Kong({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
