@@ -41,6 +41,7 @@ dependencies:
   like_button: ^2.0.4
   get_storage: ^2.0.3
   flutter_svg: ^1.1.5
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_test:
@@ -89,9 +90,9 @@ flutter:
       # fonts:
       #   - family: Schyler
       #     fonts:
-      #       - asset: fonts/Schyler-Regular.ttf
-      #       - asset: fonts/Schyler-Italic.ttf
-      #         style: italic
+    #       - asset: fonts/Schyler-Regular.ttf
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     #   - family: Trajan Pro
     #     fonts:
     #       - asset: fonts/TrajanPro.ttf

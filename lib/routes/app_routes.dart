@@ -16,4 +16,6 @@ abstract class AppRoutes {
   static const pwdIndex = "/pwdIndex";
 
   static const helpDetails = "/helpDetails";
+
+  static const webView = "/webView";
 }
