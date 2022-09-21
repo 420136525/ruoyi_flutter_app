@@ -22,20 +22,29 @@ class _WorkIndexState extends State<WorkIndex> {
       listData = GetStorage().read("route")[index]["children"];
 
       var tempList = listData.map((value) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                "static/svg/${value["meta"]["icon"]}.svg",
-                width: 30,
-                color: Colors.black,
-              ),
-              Text(value['meta']['title']),
-            ],
-          ),
-        );
+        if (value["hidden"] == false) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                SvgPicture.asset(
+                  "static/svg/${value["meta"]["icon"]}.svg",
+                  width: 30,
+                  color: Colors.black,
+                ),
+                Text(value['meta']['title']),
+              ],
+            ),
+          );
+        } else {
+          return Divider();
+        }
       });
-      return tempList.toList();
+      var list = tempList.toList();
+      list.removeWhere((e) {
+        return e is Divider;
+      });
+
+      return list;
     }
 
     var _decoration = (int index) {
@@ -63,43 +72,51 @@ class _WorkIndexState extends State<WorkIndex> {
     List<Widget> _getListData1() {
       listTab = GetStorage().read("route");
       var tempList = listTab.asMap().keys.map((index) {
-        return InkWell(
-            onTap: () {
-              if (listTab[index]["meta"]["link"] != null) {
-                Get.toNamed("/login/webView", arguments: {
-                  "title": listTab[index]["meta"]["title"],
-                  "url": "https://ruoyi.vip/protocol.html"
-                });
-              } else {
-                setState(() {
-                  clickIndex = index;
-                });
-              }
-            },
-            child: Container(
-              width: 98,
-              decoration: _decoration(index),
-              child: Center(
-                child: RichText(
-                  text: TextSpan(children: [
-                    WidgetSpan(
-                        child: SvgPicture.asset(
-                      "static/svg/${listTab[index]["meta"]["icon"]}.svg",
-                      width: 20,
-                      color: Colors.black,
-                    )),
-                    WidgetSpan(
-                        child: Text(
-                      listTab[index]["meta"]["title"],
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                    ))
-                  ]),
+        if (listTab[index]["hidden"] == false) {
+          return InkWell(
+              onTap: () {
+                if (listTab[index]["meta"]["link"] != null) {
+                  Get.toNamed("/login/webView", arguments: {
+                    "title": listTab[index]["meta"]["title"],
+                    "url": "https://ruoyi.vip/protocol.html"
+                  });
+                } else {
+                  setState(() {
+                    clickIndex = index;
+                  });
+                }
+              },
+              child: Container(
+                width: 98,
+                decoration: _decoration(index),
+                child: Center(
+                  child: RichText(
+                    text: TextSpan(children: [
+                      WidgetSpan(
+                          child: SvgPicture.asset(
+                        "static/svg/${listTab[index]["meta"]["icon"]}.svg",
+                        width: 20,
+                        color: Colors.black,
+                      )),
+                      WidgetSpan(
+                          child: Text(
+                        listTab[index]["meta"]["title"],
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      ))
+                    ]),
+                  ),
                 ),
-              ),
-            ));
+              ));
+        } else {
+          return Divider();
+        }
       });
-      return tempList.toList();
+      var list = tempList.toList();
+      list.removeWhere((e) {
+        return e is Divider;
+      });
+      return list;
     }
 
     return MaterialApp(
@@ -172,3 +189,12 @@ List<Map> imageList = [
 ];
 
 List listTab = [];
+
+class Kong extends StatelessWidget {
+  const Kong({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
