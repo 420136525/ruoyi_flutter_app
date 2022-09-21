@@ -74,7 +74,9 @@ flutter:
     - static/images/banner/banner02.jpg
     - static/images/banner/banner03.jpg
     - static/images/profile.jpg
-    - static/svg/404.svg
+    - static/svg/
+
+
 
       # An image asset can refer to one or more resolution-specific "variants", see
       # https://flutter.dev/assets-and-images/#resolution-aware
@@ -83,13 +85,13 @@ flutter:
       # https://flutter.dev/assets-and-images/#from-packages
 
       # To add custom fonts to your application, add a fonts section here,
-      # in this "flutter" section. Each entry in this list should have a
-      # "family" key with the font family name, and a "fonts" key with a
-      # list giving the asset and other descriptors for the font. For
-      # example:
-      # fonts:
-      #   - family: Schyler
-      #     fonts:
+    # in this "flutter" section. Each entry in this list should have a
+    # "family" key with the font family name, and a "fonts" key with a
+    # list giving the asset and other descriptors for the font. For
+    # example:
+    # fonts:
+    #   - family: Schyler
+    #     fonts:
     #       - asset: fonts/Schyler-Regular.ttf
     #       - asset: fonts/Schyler-Italic.ttf
     #         style: italic

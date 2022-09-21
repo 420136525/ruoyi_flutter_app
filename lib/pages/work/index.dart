@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class WorkIndex extends StatefulWidget {
   const WorkIndex({Key? key}) : super(key: key);
@@ -9,25 +12,96 @@ class WorkIndex extends StatefulWidget {
 }
 
 class _WorkIndexState extends State<WorkIndex> {
-  List<Widget> _getListData() {
-    var tempList = listData.map((value) {
-      return SingleChildScrollView(
-        child: Column(
-          children: [
-            Icon(
-              value['icon'],
-              size: 40,
-            ),
-            Text(value['title']),
-          ],
-        ),
-      );
-    });
-    return tempList.toList();
-  }
+  int clickIndex = 0;
+
+  // ignore: prefer_function_declarations_over_variables
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _getListData(index) {
+      listData = GetStorage().read("route")[index]["children"];
+
+      var tempList = listData.map((value) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              SvgPicture.asset(
+                "static/svg/${value["meta"]["icon"]}.svg",
+                width: 30,
+                color: Colors.black,
+              ),
+              Text(value['meta']['title']),
+            ],
+          ),
+        );
+      });
+      return tempList.toList();
+    }
+
+    var _decoration = (int index) {
+      if (index == clickIndex) {
+        return const BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              right: BorderSide(
+                  width: 1, color: Color.fromRGBO(241, 241, 241, 0.6)),
+            ));
+      } else {
+        return const BoxDecoration(
+            color: Color.fromRGBO(210, 210, 210, 1),
+            border: Border(
+                right: BorderSide(
+                  width: 1,
+                  color: Color.fromRGBO(241, 241, 241, 0.6),
+                ),
+                bottom: BorderSide(
+                  width: 1,
+                  color: Color.fromRGBO(241, 241, 241, 0.6),
+                )));
+      }
+    };
+    List<Widget> _getListData1() {
+      listTab = GetStorage().read("route");
+      var tempList = listTab.asMap().keys.map((index) {
+        return InkWell(
+            onTap: () {
+              if (listTab[index]["meta"]["link"] != null) {
+                Get.toNamed("/login/webView", arguments: {
+                  "title": listTab[index]["meta"]["title"],
+                  "url": "https://ruoyi.vip/protocol.html"
+                });
+              } else {
+                setState(() {
+                  clickIndex = index;
+                });
+              }
+            },
+            child: Container(
+              width: 98,
+              decoration: _decoration(index),
+              child: Center(
+                child: RichText(
+                  text: TextSpan(children: [
+                    WidgetSpan(
+                        child: SvgPicture.asset(
+                      "static/svg/${listTab[index]["meta"]["icon"]}.svg",
+                      width: 20,
+                      color: Colors.black,
+                    )),
+                    WidgetSpan(
+                        child: Text(
+                      listTab[index]["meta"]["title"],
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ))
+                  ]),
+                ),
+              ),
+            ));
+      });
+      return tempList.toList();
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -62,25 +136,23 @@ class _WorkIndexState extends State<WorkIndex> {
                   autoplay: true,
                 ),
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.more_vert,
-                  color: Theme.of(context).accentColor,
-                ),
-                title: const Text(
-                  "系统管理",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w400),
+              Container(
+                height: 40,
+                decoration: BoxDecoration(),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: _getListData1(),
                 ),
               ),
               Container(
                 height: 500,
+                margin: EdgeInsets.only(top: 30),
                 child: GridView.count(
                   crossAxisCount: 4,
                   crossAxisSpacing: 10.0,
                   //childAspectRatio: 10.0,
                   padding: const EdgeInsets.all(10),
-                  children: _getListData(),
+                  children: _getListData(clickIndex),
                 ),
               ),
             ],
@@ -91,20 +163,12 @@ class _WorkIndexState extends State<WorkIndex> {
   }
 }
 
-List listData = [
-  {'title': '用户管理', 'icon': Icons.person},
-  {'title': '角色管理', 'icon': Icons.supervisor_account_rounded},
-  {'title': '菜单管理', 'icon': Icons.palette_outlined},
-  {'title': '部门管理', 'icon': Icons.tune},
-  {'title': '岗位管理', 'icon': Icons.favorite},
-  {'title': '字典管理', 'icon': Icons.menu},
-  {'title': '参数设置', 'icon': Icons.settings},
-  {'title': '通知公告', 'icon': Icons.message},
-  {'title': '日志管理', 'icon': Icons.book},
-];
+List listData = [];
 
 List<Map> imageList = [
   {"url": "static/images/banner/banner01.jpg"},
   {"url": "static/images/banner/banner02.jpg"},
   {"url": "static/images/banner/banner03.jpg"}
 ];
+
+List listTab = [];
