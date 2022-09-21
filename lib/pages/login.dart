@@ -274,7 +274,7 @@ class _LoginIndexState extends State<LoginIndex> {
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Get.toNamed("/login/webView", arguments: {
-                                "title": "隐私政策",
+                                "title": "用户服务协议",
                                 "url": "https://ruoyi.vip/protocol.html"
                               });
                             },
@@ -286,7 +286,7 @@ class _LoginIndexState extends State<LoginIndex> {
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Get.toNamed("/login/webView", arguments: {
-                                "title": "用户服务协议",
+                                "title": "隐私政策",
                                 "url": "https://ruoyi.vip/protocol.html"
                               });
                             },
