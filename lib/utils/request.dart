@@ -69,7 +69,7 @@ class DioRequest {
       if ((response.data["code"] == 401)) {
         SPUtil().clean();
         GetStorage().erase();
-        Get.toNamed("/login");
+        Get.offAll("/login");
       }
       print("================== 响应数据 ==========================");
       print("code = ${response.statusCode}");

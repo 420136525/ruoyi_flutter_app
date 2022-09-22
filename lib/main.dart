@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetStorage().write(
+        "initialRoute",
+        GetStorage().hasData("token")
+            ? AppPages.INITIAL
+            : AppPages.INITIALLOGIN);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
@@ -29,9 +34,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [Locale("en", "US"), Locale("zh", "CN")],
 
-      initialRoute: GetStorage().hasData("token")
-          ? AppPages.INITIAL
-          : AppPages.INITIALLOGIN,
+      initialRoute: GetStorage().read("initialRoute"),
       getPages: AppPages.routes,
       routingCallback: (routing) {
         if (routing?.current != "/login" &&

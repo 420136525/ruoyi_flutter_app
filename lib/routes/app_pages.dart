@@ -6,10 +6,14 @@ import 'package:ruoyi_app/pages/mine/help/details.dart';
 import 'package:ruoyi_app/pages/mine/help/index.dart';
 import 'package:ruoyi_app/pages/mine/info/edit.dart';
 import 'package:ruoyi_app/pages/mine/info/index.dart';
+import 'package:ruoyi_app/pages/system/role/index.dart';
 
 import '../pages/mine/pwd/index.dart';
 import '../pages/mine/setting/index.dart';
 import '../pages/pages_index.dart';
+import '../pages/system/dept/index.dart';
+import '../pages/system/menu/index.dart';
+import '../pages/system/user/index.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -38,5 +42,9 @@ class AppPages {
     GetPage(name: AppRoutes.Login, page: () => const MyHome(), children: [
       GetPage(name: AppRoutes.webView, page: () => const WebViewIndex())
     ]),
+    GetPage(name: AppRoutes.user, page: () => const UserIndex()),
+    GetPage(name: AppRoutes.role, page: () => const RoleIndex()),
+    GetPage(name: AppRoutes.menu, page: () => const MenuIndex()),
+    GetPage(name: AppRoutes.dept, page: () => const DeptIndex()),
   ];
 }

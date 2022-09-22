@@ -24,15 +24,23 @@ class _WorkIndexState extends State<WorkIndex> {
       var tempList = listData.map((value) {
         if (value["hidden"] == false) {
           return SingleChildScrollView(
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  "static/svg/${value["meta"]["icon"]}.svg",
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Text(value['meta']['title']),
-              ],
+            child: InkWell(
+              onTap: () {
+                Get.toNamed("/${value['component']}", arguments: {
+                  "title": value['meta']['title'],
+                  "url": "https://ruoyi.vip/protocol.html"
+                });
+              },
+              child: Column(
+                children: [
+                  SvgPicture.asset(
+                    "static/svg/${value["meta"]["icon"]}.svg",
+                    width: 30,
+                    color: Colors.black,
+                  ),
+                  Text(value['meta']['title']),
+                ],
+              ),
             ),
           );
         } else {

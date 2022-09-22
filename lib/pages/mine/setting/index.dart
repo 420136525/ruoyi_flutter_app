@@ -88,7 +88,7 @@ class _SettingsState extends State<Settings> {
                       shape: MaterialStateProperty.all(
                           const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0))))),
+                              BorderRadius.all(Radius.circular(5.0))))),
                   onPressed: () {
                     Get.defaultDialog(
                         title: "系统提示",
@@ -96,9 +96,9 @@ class _SettingsState extends State<Settings> {
                         textCancel: "取消",
                         textConfirm: "确定",
                         onConfirm: () {
-                          Get.to(() => const MyHome());
-                          GetStorage().erase();
                           SPUtil().clean();
+                          GetStorage().erase();
+                          Get.offAll(() => const MyHome());
                         });
                   },
                   child: const Text(
