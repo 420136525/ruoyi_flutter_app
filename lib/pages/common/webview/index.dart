@@ -23,6 +23,7 @@ class _WebViewIndexState extends State<WebViewIndex> {
         shadowColor: Colors.transparent,
       ),
       body: WebView(
+        javascriptMode: JavascriptMode.unrestricted,
         initialUrl: arg["url"],
       ),
     );
