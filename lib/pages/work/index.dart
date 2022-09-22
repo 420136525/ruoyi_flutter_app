@@ -47,7 +47,7 @@ class _WorkIndexState extends State<WorkIndex> {
       return list;
     }
 
-    var _decoration = (int index) {
+    _decoration(int index) {
       if (index == clickIndex) {
         return const BoxDecoration(
             color: Colors.white,
@@ -68,7 +68,9 @@ class _WorkIndexState extends State<WorkIndex> {
                   color: Color.fromRGBO(241, 241, 241, 0.6),
                 )));
       }
-    };
+    }
+
+    ;
     List<Widget> _getListData1() {
       listTab = GetStorage().read("route");
       var tempList = listTab.asMap().keys.map((index) {
