@@ -34,7 +34,8 @@ class MyApp extends StatelessWidget {
           : AppPages.INITIALLOGIN,
       getPages: AppPages.routes,
       routingCallback: (routing) {
-        if (routing?.current != "/login") {
+        if (routing?.current != "/login" ||
+            routing?.current != "/login/webView") {
           getInfo();
           getUserProfile();
         }

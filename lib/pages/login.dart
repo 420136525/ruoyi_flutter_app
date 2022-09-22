@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
@@ -264,35 +265,32 @@ class _LoginIndexState extends State<LoginIndex> {
               Center(
                 child: RichText(
                   text: TextSpan(
+                      text: "登录即代表同意",
                       style: const TextStyle(color: Colors.black),
                       children: [
-                        const WidgetSpan(child: Text("登录即代表同意")),
-                        WidgetSpan(
-                            child: InkWell(
-                          onTap: () {
-                            Get.toNamed("/login/webView", arguments: {
-                              "title": "隐私政策",
-                              "url": "https://ruoyi.vip/protocol.html"
-                            });
-                          },
-                          child: const Text(
-                            "《用户隐私》",
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        )),
-                        WidgetSpan(
-                            child: InkWell(
-                          onTap: () {
-                            Get.toNamed("/login/webView", arguments: {
-                              "title": "用户服务协议",
-                              "url": "https://ruoyi.vip/protocol.html"
-                            });
-                          },
-                          child: const Text(
-                            "《用户服务协议》",
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        )),
+                        TextSpan(
+                          text: "《用户协议》",
+                          style: const TextStyle(color: Colors.red),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Get.toNamed("/login/webView", arguments: {
+                                "title": "用户服务协议",
+                                "url": "https://ruoyi.vip/protocol.html"
+                              });
+                            },
+                        ),
+                        TextSpan(
+                          text: "《用户隐私》",
+                          style:
+                              TextStyle(color: Theme.of(context).accentColor),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Get.toNamed("/login/webView", arguments: {
+                                "title": "隐私政策",
+                                "url": "https://ruoyi.vip/protocol.html"
+                              });
+                            },
+                        ),
                       ]),
                 ),
               ),
