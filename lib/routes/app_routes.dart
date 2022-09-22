@@ -26,4 +26,15 @@ abstract class AppRoutes {
   static const menu = "/system/menu/index";
 
   static const dept = "/system/dept/index";
+
+  static const post = "/system/post/index";
+
+  static const notice = "/system/notice/index";
+
+  static const config = "/system/config/index";
+
+  static const dict = "/system/dict/index";
+
+
+  static const swagger = "/tool/swagger/index";
 }

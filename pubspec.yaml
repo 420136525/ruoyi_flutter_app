@@ -41,7 +41,8 @@ dependencies:
   like_button: ^2.0.4
   get_storage: ^2.0.3
   flutter_svg: ^1.1.5
-  webview_flutter: ^3.0.4
+  webview_flutter: ^3.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -78,13 +79,13 @@ flutter:
 
 
 
-      # An image asset can refer to one or more resolution-specific "variants", see
-      # https://flutter.dev/assets-and-images/#resolution-aware
+    # An image asset can refer to one or more resolution-specific "variants", see
+    # https://flutter.dev/assets-and-images/#resolution-aware
 
-      # For details regarding adding assets from package dependencies, see
-      # https://flutter.dev/assets-and-images/#from-packages
+    # For details regarding adding assets from package dependencies, see
+    # https://flutter.dev/assets-and-images/#from-packages
 
-      # To add custom fonts to your application, add a fonts section here,
+    # To add custom fonts to your application, add a fonts section here,
     # in this "flutter" section. Each entry in this list should have a
     # "family" key with the font family name, and a "fonts" key with a
     # list giving the asset and other descriptors for the font. For
