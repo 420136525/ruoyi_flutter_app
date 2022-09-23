@@ -14,7 +14,7 @@ class _SwaggerIndexState extends State<SwaggerIndex> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "文档",
+          "系统接口",
           style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -22,7 +22,7 @@ class _SwaggerIndexState extends State<SwaggerIndex> {
       ),
       body: WebView(
         javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: "https://zhuanlan.zhihu.com/p/383079828",
+        initialUrl: "https://mouor.cn:8081/swagger-ui/index.html",
       ),
     );
   }

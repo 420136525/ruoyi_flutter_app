@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class HomeIndex extends StatefulWidget {
   const HomeIndex({Key? key}) : super(key: key);
@@ -14,8 +15,11 @@ class _HomeIndexState extends State<HomeIndex> {
       home: Scaffold(
         body: Container(
           child: Center(
-            child: Text("首页"),
-          ),
+              child: WebView(
+            javascriptMode: JavascriptMode.unrestricted,
+            initialUrl:
+                "https://alteredqualia.com/xg/examples/nebula_artefact.html",
+          )),
         ),
       ),
     );
