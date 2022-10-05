@@ -1,7 +1,6 @@
 
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi Flutter APPv1.0.0</h1>
 <h4 align="center">基于flutter 框架</h4>
-<h4 align="center"> 9月底有考试，需要复习，停更一周左右</h4>
 
 ## 平台简介
 
