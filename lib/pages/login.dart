@@ -282,7 +282,7 @@ class _LoginIndexState extends State<LoginIndex> {
                         TextSpan(
                           text: "《用户隐私》",
                           style:
-                              TextStyle(color: Theme.of(context).accentColor),
+                              TextStyle(color: Theme.of(context).colorScheme.secondary),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Get.toNamed("/login/webView", arguments: {
@@ -308,11 +308,12 @@ class LogInIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      //TODO: logo更改
       leading: Image.asset(
         "static/logo.png",
       ),
       title: const Text(
-        "若依移动端登录",
+        "莫日格勒登录",
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w300,

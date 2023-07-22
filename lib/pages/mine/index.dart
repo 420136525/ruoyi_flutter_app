@@ -37,7 +37,7 @@ class _MineIndexState extends State<MineIndex> {
                       child: Container(
                         margin: EdgeInsets.only(),
                         height: 150,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                         padding: EdgeInsets.only(top: 40),
                         child: ListTile(
                           onTap: () async {

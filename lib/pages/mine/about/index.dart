@@ -38,7 +38,7 @@ class _AboutState extends State<About> {
                           width: 100,
                         ),
                         const Text(
-                          "若依移动端",
+                          "莫日格勒移动端",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
